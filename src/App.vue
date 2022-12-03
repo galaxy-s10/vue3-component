@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- <ToastDemo></ToastDemo> -->
-    <!-- <NoticebarDemo></NoticebarDemo> -->
-    <ModalDemo></ModalDemo>
+    <NoticebarDemo></NoticebarDemo>
+    <!-- <ModalDemo></ModalDemo> -->
     <div class="cross-ico"></div>
     <div class="flex1"></div>
     <div class="flex2"></div>
@@ -11,14 +11,14 @@
 
 <script lang="ts" setup>
 import ModalDemo from './views/modal-demo/index.vue';
-// import NoticebarDemo from './views/noticebar-demo/index.vue';
-// import ToastDemo from './views/toast-demo/index.vue';
+import NoticebarDemo from './views/noticebar-demo/index.vue';
+import ToastDemo from './views/toast-demo/index.vue';
 </script>
 
 <style lang="scss" scoped>
 .cross-ico {
-  width: 10px;
-  height: 10px;
+  width: 30px;
+  height: 30px;
   @include cross(red, 2px);
 }
 .flex1 {

@@ -9,7 +9,10 @@
       '--speed': speed / 1000 + 's',
     }"
   >
-    <div class="list">
+    <div
+      v-if="!refresh"
+      class="list"
+    >
       <div
         v-for="(item, index) in [...list, list[0]]"
         :key="index"
@@ -18,11 +21,12 @@
         {{ item }}
       </div>
     </div>
+    <div v-if="refresh"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref, withDefaults, watch } from 'vue';
+import { defineProps, ref, withDefaults, watch, nextTick } from 'vue';
 
 const props = withDefaults(
   defineProps<{
@@ -40,6 +44,7 @@ const props = withDefaults(
   }
 );
 
+const refresh = ref(false);
 const width = ref(props.width);
 const height = ref(props.height);
 const list = ref(props.list);
@@ -53,10 +58,16 @@ watch(
     height.value = newVal.height;
     speed.value = newVal.speed;
     className.value = newVal.className;
+
     if (newVal.list.length <= 0) {
       console.error('list长度必须大于0！');
     } else {
+      refresh.value = true;
       list.value = newVal.list;
+      // eslint-disable-next-line
+      nextTick(() => {
+        refresh.value = false;
+      });
     }
   },
   {
@@ -107,10 +118,9 @@ watch(
       box-sizing: border-box;
       padding: 0 10px;
       width: 100%;
+      height: calc(var(--height) * 1px);
       white-space: nowrap;
       animation: vertical_itemMove calc(var(--speed)) infinite;
-
-      height: calc(var(--height) * 1px);
 
       @extend %singleEllipsis;
     }

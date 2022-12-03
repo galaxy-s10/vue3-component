@@ -25,7 +25,7 @@ const props = withDefaults(
   defineProps<{
     modelValue: boolean;
     showBack: boolean;
-    maskClosable: boolean;
+    maskClosable?: boolean;
   }>(),
   {
     modelValue: false,
@@ -57,7 +57,7 @@ const handleClose = () => {
   .mask {
     background: rgba(0, 0, 0, 0.45);
 
-    // @include full(fixed);
+    @include full(fixed);
   }
 
   .container {
@@ -81,7 +81,7 @@ const handleClose = () => {
       width: 15px;
       height: 15px;
 
-      // @include cross(black, 1.1px);
+      @include cross(black, 1.1px);
     }
     .content {
       color: #999999;

@@ -6,3 +6,7 @@ declare module '*.vue' {
 }
 
 interface Window {}
+
+declare global {
+  import utils from 'billd-utils';
+}

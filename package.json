@@ -30,8 +30,9 @@
     }
   },
   "dependencies": {
-    "@huangshuisheng/utils": "latest",
+    "billd-html-webpack-plugin": "latest",
     "billd-scss": "latest",
+    "billd-utils": "latest",
     "vue": "^3.2.31"
   },
   "devDependencies": {
