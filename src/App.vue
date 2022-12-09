@@ -1,8 +1,9 @@
 <template>
   <div>
     <!-- <ToastDemo></ToastDemo> -->
-    <NoticebarDemo></NoticebarDemo>
+    <!-- <NoticebarDemo></NoticebarDemo> -->
     <!-- <ModalDemo></ModalDemo> -->
+    <dnd-demo></dnd-demo>
     <div class="cross-ico"></div>
     <div class="flex1"></div>
     <div class="flex2"></div>
@@ -10,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+import DndDemo from './views/dnd-demo/index.vue';
 import ModalDemo from './views/modal-demo/index.vue';
 import NoticebarDemo from './views/noticebar-demo/index.vue';
 import ToastDemo from './views/toast-demo/index.vue';

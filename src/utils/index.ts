@@ -1,4 +1,38 @@
 /**
+ * @description 节流函数（Promise）
+ * @param {Function} fn 函数
+ * @param {number} interval 间隔
+ * @param {boolean} trailing 最后一次执行
+ * @return {Promise}
+ */
+export const throttle = (fn: any, interval: number, trailing = false) => {
+  let lastTime = 0;
+  let timer;
+  return function (...args) {
+    const newTime = new Date().getTime();
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    let result;
+    return new Promise((resolve) => {
+      if (newTime - lastTime > interval) {
+        // @ts-ignore
+        result = fn.apply(this, args);
+        resolve(result);
+        lastTime = newTime;
+      } else if (trailing) {
+        timer = setTimeout(() => {
+          // @ts-ignore
+          result = fn.apply(this, args);
+          resolve(result);
+        }, interval);
+      }
+    });
+  };
+};
+
+/**
  * @description: 是否支持0.5px
  * @return {*}
  */
